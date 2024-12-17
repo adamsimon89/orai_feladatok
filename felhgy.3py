@@ -1,0 +1,45 @@
+import random
+
+
+szamok = [random.randint(-100, 100) for _ in range(100)]
+
+
+tobb_nagyobb = 0
+tobb_kisebb = 0
+
+for szam in szamok:
+    if szam > 0:
+        tobb_nagyobb += 1
+    elif szam < 0:
+        tobb_kisebb += 1
+
+if tobb_nagyobb > tobb_kisebb:
+    print("Több 0-tól nagyobb szám van.")
+elif tobb_kisebb > tobb_nagyobb:
+    print("Több 0-tól kisebb szám van.")
+else:
+    print("Ugyanannyi 0-tól nagyobb és kisebb szám van.")
+
+index_50_nagyobb = None
+
+for i in range(len(szamok)):
+    if szamok[i] > 50:
+        index_50_nagyobb = i
+        break
+
+if index_50_nagyobb is not None:
+    print(f"Az első 50-től nagyobb szám sorszáma: {index_50_nagyobb}")
+else:
+    print("Nincs 50-től nagyobb szám a listában.")
+
+kulonbseg_tul = False
+
+for i in range(len(szamok) - 1):
+    if abs(szamok[i] - szamok[i + 1]) > 120:
+        kulonbseg_tul = True
+        break
+
+if kulonbseg_tul:
+    print("Van olyan eset, hogy két egymást követő szám közötti különbség meghaladja a 120-at.")
+else:
+    print("Nincs olyan eset, hogy két egymást követő szám közötti különbség meghaladja a 120-at.")
